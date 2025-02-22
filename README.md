@@ -42,7 +42,7 @@ bun dev
 
 ## How to write MCP tools
 
-Edit the `src/index.ts` file to add new tools. Each method in the `MyWorker` class becomes an MCP tool that can be used by your Cursor Agent.
+Edit the `src/index.ts` file to add a new method to the `MyWorker` class. Each method in this file becomes an MCP tool that can be used by your Cursor Agent.
 
 For example, in the `sayHello` function that you'll find in the `src/index.ts` file:
 
@@ -61,23 +61,20 @@ sayHello(name: string) {
 - The `@param` tags are the tool's parameters, with their types and descriptions
 - The `@return` tag is the tool's return value, with its type
 
-How to add new tools:
-
-1. Add a new method to the `MyWorker` class
 2. Deploy your changes with `bun run deploy`
-3. Reload your Cursor Window and click the refresh icon next to the MCP server name.
+3.
 
 You should see your new tool.
 
-## Deployment
+## Deploying Changes
 
-Deployment to Cloudflare Workers happens automatically during setup.
-
-For subsequent deployments:
+1. Redeploy the worker:
 
 ```bash
 bun run deploy
 ```
+
+2. Refresh your Cursor Window and click the refresh icon next to the MCP server name. Now you can ask your agent to use the new tool!
 
 ## Why Cloudflare Workers?
 
