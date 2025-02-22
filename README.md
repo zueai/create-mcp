@@ -6,30 +6,18 @@ This is super useful if you want to add MCP tools to your Cursor Agent to call A
 
 ## Prerequisites
 
-- A Cloudflare account with [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed
+- A Cloudflare account with [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed. You can make sure you are logged in to Wrangler by running `wrangler login`.
 - Claude Desktop App installed (because it uses [workers-mcp](https://github.com/cloudflare/workers-mcp) under the hood)
 
 ## Instructions
 
-Make sure you are logged in to Wrangler by running `wrangler login`.
-
-Create a new MCP server, just run:
+To create a new MCP server, just run:
 
 ```bash
 bun create mcp
 ```
 
 You can also pass a name to the server: `bun create mcp <server-name>`.
-
-## The tool will
-
-- Clone the template repository into `<current-dir>/<server-name>`
-- Install dependencies
-- Initialize a Git repository
-- Set up the MCP server
-- Deploy a Cloudflare Workers with the same name as the server
-- Add it to Claude Desktop
-- Copy the MCP server command to your clipboard so you can paste it into Cursor
 
 ## Development
 
@@ -42,7 +30,7 @@ bun dev
 
 ## How to write MCP tools
 
-Edit the `src/index.ts` file to add a new method to the `MyWorker` class. Each method in this file becomes an MCP tool that can be used by your Cursor Agent.
+Edit the `src/index.ts` file to add a new method to the `MyWorker` class, each method compiles into an MCP tool.
 
 For example, in the `sayHello` function that you'll find in the `src/index.ts` file:
 
@@ -57,14 +45,9 @@ sayHello(name: string) {
 }
 ```
 
-- The JSDoc comment's first line is the tool's description
-- The `@param` tags are the tool's parameters, with their types and descriptions
-- The `@return` tag is the tool's return value, with its type
-
-2. Deploy your changes with `bun run deploy`
-3.
-
-You should see your new tool.
+- The JSDoc comment's first line is the tool's description.
+- The `@param` tags are the tool's parameters, with their types and descriptions.
+- The `@return` tag is the tool's return value, with its type.
 
 ## Deploying Changes
 
@@ -74,7 +57,9 @@ You should see your new tool.
 bun run deploy
 ```
 
-2. Refresh your Cursor Window and click the refresh icon next to the MCP server name. Now you can ask your agent to use the new tool!
+2. Refresh your Cursor Window and click the refresh icon next to the MCP server name.
+
+Now you can ask your agent to use the new tool!
 
 ## Why Cloudflare Workers?
 
@@ -84,10 +69,16 @@ I don't like running MCP servers locally, and I'm pretty sure you don't either. 
 
 All you have to do is write functions. Put your descriptions and params in JSDoc comments and it just works.
 
-## License
+## What this CLI does
 
-MIT
+- Clone the template repository into `<current-dir>/<server-name>`
+- Install dependencies
+- Initialize a Git repository
+- Set up the MCP server
+- Deploy a Cloudflare Workers with the same name as the server
+- Add it to Claude Desktop
+- Copy the MCP server command to your clipboard so you can paste it into Cursor
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions and feedback are extremely welcome! Please feel free to submit a Pull Request or open an issue!
