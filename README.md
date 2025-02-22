@@ -11,7 +11,7 @@ A CLI tool that sets up a Model Control Protocol (MCP) server and deploys it to 
 
 ## Instructions
 
-To scaffold and deploy a new MCP server to Workers, just run:
+To scaffold and deploy a new MCP server, just run:
 
 ```bash
 bun create mcp
@@ -85,4 +85,4 @@ Contributions and feedback are extremely welcome! Please feel free to submit a P
 
 ## Acknowledgements
 
-This project would not be possible without [workers-mcp](https://github.com/cloudflare/workers-mcp) made by [@geelen](https://github.com/geelen).
+This project would not be possible without [workers-mcp](https://github.com/cloudflare/workers-mcp) made by [@geelen](https://github.com/geelen)
