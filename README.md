@@ -1,5 +1,7 @@
 # create-mcp
 
+[![smithery badge](https://smithery.ai/badge/@zueai/create-mcp)](https://smithery.ai/server/@zueai/create-mcp)
+
 A CLI tool that sets up a Model Control Protocol (MCP) server and deploys it to Cloudflare Workers so you can start making new tools for your Cursor Agent in minutes.
 
 This is super useful if you want to add MCP tools to your Cursor Agent to call APIs or other services.
@@ -10,6 +12,14 @@ This is super useful if you want to add MCP tools to your Cursor Agent to call A
 - Claude Desktop App installed (because it uses [workers-mcp](https://github.com/cloudflare/workers-mcp) under the hood)
 
 ## Instructions
+
+### Installing via Smithery
+
+To install Create MCP for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@zueai/create-mcp):
+
+```bash
+npx -y @smithery/cli install @zueai/create-mcp --client claude
+```
 
 To create a new MCP server, just run:
 
