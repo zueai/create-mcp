@@ -19,6 +19,16 @@ bun create mcp
 
 You can also pass a name to the server: `bun create mcp <server-name>`.
 
+## What this CLI does
+
+- Clone the template repository into `<current-dir>/<server-name>`
+- Install dependencies
+- Initialize a Git repository
+- Set up the MCP server
+- Deploy a Cloudflare Workers with the same name as the server
+- Add it to Claude Desktop
+- Copy the MCP server command to your clipboard so you can paste it into Cursor
+
 ## Development
 
 To start hacking on your MCP server:
@@ -68,16 +78,6 @@ Honestly? Vibes and good DX. Also deployments are blazing fast.
 I don't like running MCP servers locally, and I'm pretty sure you don't either. Now you don't have to run a node process if you just want to create and use minimal API wrapper MCP tools in Cursor.
 
 All you have to do is write functions. Put your descriptions and params in JSDoc comments and it just works.
-
-## What this CLI does
-
-- Clone the template repository into `<current-dir>/<server-name>`
-- Install dependencies
-- Initialize a Git repository
-- Set up the MCP server
-- Deploy a Cloudflare Workers with the same name as the server
-- Add it to Claude Desktop
-- Copy the MCP server command to your clipboard so you can paste it into Cursor
 
 ## Contributing
 
