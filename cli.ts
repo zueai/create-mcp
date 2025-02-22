@@ -18,6 +18,10 @@ const PACKAGE_MANAGERS = {
 type PackageManager = keyof typeof PACKAGE_MANAGERS;
 
 async function main() {
+	// Display welcome message
+	console.log("\n");
+	console.log(pc.bgCyan(pc.black(" ⚡️ Welcome to create-mcp ")));
+
 	// Get project name from args or prompt
 	let projectName = process.argv[2];
 
@@ -164,6 +168,10 @@ async function main() {
 			console.log(pc.white("\nYou can open the project later with:"));
 			console.log(pc.cyan(`  cursor ${targetDir}\n`));
 		}
+
+		// Add closing message
+		console.log(pc.green("\n✨ MCP server created successfully!"));
+		console.log(pc.cyan("Happy hacking! 🚀\n"));
 	} catch (error) {
 		console.error(pc.red("Error creating project:"), error);
 		process.exit(1);
