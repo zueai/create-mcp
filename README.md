@@ -2,12 +2,14 @@
 
 A CLI tool that sets up a Model Control Protocol (MCP) server and deploys it to Cloudflare Workers so you can start making new tools for your Cursor Agent in minutes.
 
+Just write TypeScript functions with JSDoc comments to give your agent MCP tools.
+
 This is super useful if you want to add MCP tools to your Cursor Agent to call APIs or other services.
 
 ## Prerequisites
 
 - A Cloudflare account with [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed. You can make sure you are logged in to Wrangler by running `wrangler login`.
-- Claude Desktop App installed (because it uses [workers-mcp](https://github.com/cloudflare/workers-mcp) under the hood)
+- Claude Desktop App installed (because it uses workers-mcp under the hood)
 
 ## Instructions
 
@@ -28,11 +30,11 @@ cd <server-name>
 bun dev
 ```
 
-## How to write MCP tools
+## How to Use
 
-Edit the `src/index.ts` file to add a new method to the `MyWorker` class, each method compiles into an MCP tool.
+Just add functions to the `MyWorker` class in `src/index.ts`.
 
-For example, in the `sayHello` function that you'll find in the `src/index.ts` file:
+For example:
 
 ```typescript
 /**
@@ -45,8 +47,8 @@ sayHello(name: string) {
 }
 ```
 
-- The JSDoc comment's first line is the tool's description.
-- The `@param` tags are the tool's parameters, with their types and descriptions.
+- The first line is the tool's description.
+- The `@param` tags are the tool's params, with types and descriptions.
 - The `@return` tag is the tool's return value, with its type.
 
 ## Deploying Changes
@@ -57,7 +59,7 @@ sayHello(name: string) {
 bun run deploy
 ```
 
-2. Refresh your Cursor Window and click the refresh icon next to the MCP server name.
+2. Reload your Cursor window.
 
 Now you can ask your agent to use the new tool!
 
