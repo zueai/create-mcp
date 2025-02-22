@@ -3,7 +3,8 @@
 	"scripts": {
 		"dev": "bun check && wrangler dev",
 		"deploy": "workers-mcp docgen src/index.ts && bun check && wrangler deploy --minify",
-		"check": "bunx biome check --write ."
+		"check": "bunx biome check --write .",
+		"secrets": "wrangler secret bulk secrets.json"
 	},
 	"dependencies": {
 		"workers-mcp": "^0.0.13"
