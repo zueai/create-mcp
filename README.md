@@ -4,7 +4,7 @@ A CLI tool that quickly scaffolds and deploys a Model Control Protocol (MCP) ser
 
 ## Prerequisites
 
-- A Cloudflare account with wrangler
+- A Cloudflare account with [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed
 - Claude Desktop App installed (because it uses [workers-mcp](https://github.com/cloudflare/workers-mcp) under the hood)
 
 ## Instructions
