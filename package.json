@@ -2,14 +2,20 @@
 	"name": "create-mcp",
 	"version": "0.0.1",
 	"type": "module",
+	"description": "CLI tool to quickly scaffold new MCP servers",
+	"author": "zue",
+	"license": "MIT",
 	"bin": {
 		"create-mcp": "./cli.ts"
 	},
+	"files": ["cli.ts", "template"],
 	"scripts": {
 		"dev": "bun check && wrangler dev",
 		"deploy": "workers-mcp docgen src/index.ts && bun check && wrangler deploy --minify",
-		"check": "bunx biome check --write ."
+		"check": "bunx biome check --write .",
+		"prepublishOnly": "bun check"
 	},
+	"keywords": ["mcp", "create-mcp", "scaffold", "cli", "cloudflare", "workers"],
 	"dependencies": {
 		"workers-mcp": "^0.0.13",
 		"prompts": "^2.4.2",
