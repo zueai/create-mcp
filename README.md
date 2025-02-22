@@ -9,11 +9,7 @@ A CLI tool that quickly scaffolds and deploys a Model Control Protocol (MCP) ser
 
 ## Instructions
 
-Make sure you are logged in to Wrangler:
-
-```bash
-wrangler login
-```
+Make sure you are logged in to Wrangler by running `wrangler login`.
 
 Create a new MCP server, just run:
 
@@ -21,11 +17,7 @@ Create a new MCP server, just run:
 bun create mcp
 ```
 
-You can also pass a name to the server:
-
-```bash
-bun create mcp <server-name>
-```
+You can also pass a name to the server by running `bun create mcp <server-name>`.
 
 ## The tool will
 
