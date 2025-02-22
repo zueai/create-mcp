@@ -61,11 +61,11 @@ sayHello(name: string) {
 - The `@param` tags are the tool's parameters, with their types and descriptions
 - The `@return` tag is the tool's return value, with its type
 
-To add a new tool:
+How to add new tools:
 
 1. Add a new method to the `MyWorker` class
 2. Deploy your changes with `bun run deploy`
-3. Click the refresh button in Cursor.
+3. Reload your Cursor Window and click the refresh icon next to the MCP server name.
 
 You should see your new tool.
 
