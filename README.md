@@ -58,7 +58,8 @@ sayHello(name: string) {
 ```
 
 - The JSDoc comment's first line is the tool's description
-- The `@param` tags are the tool's parameters
+- The `@param` tags are the tool's parameters, with their types and descriptions
+- The `@return` tag is the tool's return value, with its type
 
 To add a new tool:
 

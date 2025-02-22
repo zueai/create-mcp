@@ -1,0 +1,40 @@
+# MCP Server
+
+## Project Context
+
+This is a template for a Model Control Protocol (MCP) server. It is a cloudflare worker that exposes a set of tools to an LLM.
+
+### What is MCP?
+
+MCP is an open protocol that standardizes how applications provide context to LLMs. Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools.
+
+MCP Clients are protocol clients that maintain 1:1 connections with servers.
+
+MCP Servers, such as this one, are lightweight programs that each expose specific capabilities through the standardized Model Context Protocol.
+
+## How to write MCP tools
+
+Edit the `src/index.ts` file to add new tools. Each method in the `MyWorker` class becomes an MCP tool that can be used by your Cursor Agent.
+
+For example, here is an example of an MCP tool that returns a friendly greeting:
+
+```typescript
+/**
+ * A warm, friendly greeting from your new Workers MCP server.
+ * @param name {string} the name of the person we are greeting.
+ * @return {string} the contents of our greeting.
+ */
+sayHello(name: string) {
+    return `Hello from an MCP Worker, ${name}!`;
+}
+```
+
+- The JSDoc comment's first line is the tool's description.
+- The `@param` tags are the tool's parameters, with their types and descriptions.
+- The `@return` tag is the tool's return value, with its type.
+
+To add a new tool, just write a new function to the `MyWorker` class, following the example above. Make sure to add the JSDoc comment in the exact format shown above with the correct types so that the compiler parses it correctly.
+
+## Deployment
+
+Run `bun run deploy` to deploy your changes to Cloudflare Workers.
