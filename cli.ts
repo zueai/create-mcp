@@ -170,7 +170,6 @@ async function main() {
 		}
 
 		// Add closing message
-		console.log(pc.green("\n✨ MCP server created successfully!"));
 		console.log(pc.cyan("Happy hacking! 🚀\n"));
 	} catch (error) {
 		console.error(pc.red("Error creating project:"), error);
