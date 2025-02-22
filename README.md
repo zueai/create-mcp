@@ -2,9 +2,7 @@
 
 A CLI tool that sets up a Model Control Protocol (MCP) server and deploys it to Cloudflare Workers so you can start making new tools for your Cursor Agent in minutes.
 
-Just write TypeScript functions with JSDoc comments to give your agent MCP tools.
-
-This is super useful if you want to add MCP tools to your Cursor Agent to call APIs or other services.
+> Just write TypeScript functions with JSDoc comments to give your agent MCP tools.
 
 ## Prerequisites
 
