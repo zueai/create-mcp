@@ -1,0 +1,25 @@
+{
+	"name": "create-mcp",
+	"version": "0.0.1",
+	"type": "module",
+	"bin": {
+		"create-mcp": "./cli.ts"
+	},
+	"scripts": {
+		"dev": "bun check && wrangler dev",
+		"deploy": "workers-mcp docgen src/index.ts && bun check && wrangler deploy --minify",
+		"check": "bunx biome check --write ."
+	},
+	"dependencies": {
+		"workers-mcp": "^0.0.13",
+		"prompts": "^2.4.2",
+		"picocolors": "^1.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@cloudflare/workers-types": "^4.20250109.0",
+		"@types/prompts": "^2.4.9",
+		"bun-types": "latest",
+		"wrangler": "^3.101.0"
+	}
+}

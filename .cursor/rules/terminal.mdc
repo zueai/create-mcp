@@ -1,0 +1,9 @@
+---
+description: running terminal commands
+globs: 
+---
+
+## Terminal Commands
+
+- Always use bun as the package manager for this project instead of npm or yarn.
+- Always use bunx to run any scripts or wrangler commands (bunx wrangler {command}) instead of npx or yarn.
