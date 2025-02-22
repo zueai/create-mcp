@@ -23,7 +23,7 @@ You can also pass a name to the server: `bun create mcp <server-name>`.
 
 ## The tool will
 
-- Clone the template repository
+- Clone the template repository into `<current-dir>/<server-name>`
 - Install dependencies
 - Initialize a Git repository
 - Set up the MCP server
