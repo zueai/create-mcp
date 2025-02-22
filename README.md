@@ -21,13 +21,13 @@ You can also pass a name to the server: `bun create mcp <server-name>`.
 
 ## What this CLI does
 
-- Clone the template repository into `<current-dir>/<server-name>`
-- Install dependencies
-- Initialize a Git repository
-- Set up the MCP server
-- Deploy a Cloudflare Workers with the same name as the server
-- Add it to Claude Desktop
-- Copy the MCP server command to your clipboard so you can paste it into Cursor
+- Clones the template worker repository into `<current-dir>/<server-name>`
+- Installs dependencies
+- Initializes a Git repository
+- Sets up the MCP server using [workers-mcp](https://github.com/cloudflare/workers-mcp)
+- Deploys a Cloudflare Worker with the same name as the server
+- Adds it to Claude Desktop
+- Copies the MCP server command to your clipboard so you can paste it into Cursor
 
 ## Development
 
