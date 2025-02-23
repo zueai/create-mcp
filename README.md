@@ -81,6 +81,7 @@ All you have to do is write functions. Put your descriptions and params in JSDoc
 ## Examples
 
 - [Neon](https://github.com/amxv/neon-mcp)
+- [Cloudflare](https://github.com/amxv/cloudflare-api-mcp)
 
 ## Contributing
 
