@@ -1,6 +1,6 @@
 {
 	"name": "create-mcp",
-	"version": "0.4.6",
+	"version": "0.4.7",
 	"type": "module",
 	"description": "CLI tool to quickly scaffold new MCP servers",
 	"author": "zue",
@@ -8,7 +8,10 @@
 	"bin": {
 		"create-mcp": "./cli.ts"
 	},
-	"files": ["cli.ts", "template"],
+	"files": [
+		"cli.ts",
+		"template"
+	],
 	"scripts": {
 		"dev": "bun check && wrangler dev",
 		"deploy": "workers-mcp docgen src/index.ts && bun check && wrangler deploy --minify",
@@ -16,7 +19,14 @@
 		"bump": "npm version patch --no-git-tag-version",
 		"prepublishOnly": "bun check && npm run bump"
 	},
-	"keywords": ["mcp", "create-mcp", "scaffold", "cli", "cloudflare", "workers"],
+	"keywords": [
+		"mcp",
+		"create-mcp",
+		"scaffold",
+		"cli",
+		"cloudflare",
+		"workers"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/zueai/create-mcp"

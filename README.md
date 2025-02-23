@@ -19,12 +19,6 @@ bun create mcp
 
 You can also pass a name to the server: `bun create mcp <server-name>`.
 
-To clone and set up an existing MCP server from GitHub:
-
-```bash
-bun create mcp <server-name> -clone <github-url>
-```
-
 ## What this CLI does
 
 For new servers:
