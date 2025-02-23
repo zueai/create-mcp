@@ -8,10 +8,7 @@
 	"bin": {
 		"create-mcp": "./cli.ts"
 	},
-	"files": [
-		"cli.ts",
-		"template"
-	],
+	"files": ["cli.ts", "template"],
 	"scripts": {
 		"dev": "bun check && wrangler dev",
 		"deploy": "workers-mcp docgen src/index.ts && bun check && wrangler deploy --minify",
@@ -19,14 +16,7 @@
 		"bump": "npm version patch --no-git-tag-version",
 		"prepublishOnly": "bun check && npm run bump"
 	},
-	"keywords": [
-		"mcp",
-		"create-mcp",
-		"scaffold",
-		"cli",
-		"cloudflare",
-		"workers"
-	],
+	"keywords": ["mcp", "create-mcp", "scaffold", "cli", "cloudflare", "workers"],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/zueai/create-mcp"
@@ -36,14 +26,18 @@
 	},
 	"homepage": "https://github.com/zueai/create-mcp#readme",
 	"dependencies": {
-		"workers-mcp": "^0.0.13",
+		"npm-which": "^3.0.1",
+		"picocolors": "^1.0.0",
 		"prompts": "^2.4.2",
-		"picocolors": "^1.0.0"
+		"workers-mcp": "^0.0.13",
+		"yargs": "^17.7.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
 		"@cloudflare/workers-types": "^4.20250109.0",
+		"@types/npm-which": "^3.0.3",
 		"@types/prompts": "^2.4.9",
+		"@types/yargs": "^17.0.32",
 		"bun-types": "latest",
 		"wrangler": "^3.101.0"
 	}

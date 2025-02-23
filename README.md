@@ -19,7 +19,15 @@ bun create mcp
 
 You can also pass a name to the server: `bun create mcp <server-name>`.
 
+To clone and set up an existing MCP server from GitHub:
+
+```bash
+bun create mcp <server-name> -clone <github-url>
+```
+
 ## What this CLI does
+
+For new servers:
 
 - Clones the template worker repository into `<current-dir>/<server-name>`
 - Installs dependencies
@@ -27,6 +35,15 @@ You can also pass a name to the server: `bun create mcp <server-name>`.
 - Deploys a Hello World MCP server to your Cloudflare account
 - Adds it to Claude Desktop
 - Copies the MCP server command to your clipboard so you can paste it into Cursor
+
+For cloning existing servers:
+
+- Clones the repository from GitHub
+- Installs dependencies
+- Sets up a new MCP secret
+- Deploys to your Cloudflare account
+- Adds it to Claude Desktop
+- Copies the MCP server command to your clipboard
 
 ## Development
 
