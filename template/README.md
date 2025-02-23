@@ -12,7 +12,7 @@ bun dev
 
 Open Cursor and paste the MCP server command that was copied to your clipboard during setup. Don't forget to reload your Cursor window to use the updated tools.
 
-## Learn More
+## How to create new MCP tools
 
 To create new MCP tools, add methods to the `MyWorker` class in `src/index.ts`. Each function will automatically become an MCP tool that your agent can use.
 

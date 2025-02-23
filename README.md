@@ -95,6 +95,10 @@ I don't like running MCP servers locally, and I'm pretty sure you don't either. 
 
 All you have to do is write functions. Put your descriptions and params in JSDoc comments and it just works.
 
+## Examples
+
+- [Neon](https://github.com/amxv/neon-mcp)
+
 ## Contributing
 
 Contributions and feedback are extremely welcome! Please feel free to submit a Pull Request or open an issue!
