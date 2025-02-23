@@ -1,6 +1,6 @@
 {
 	"name": "create-mcp",
-	"version": "0.4.5",
+	"version": "0.4.6",
 	"type": "module",
 	"description": "CLI tool to quickly scaffold new MCP servers",
 	"author": "zue",

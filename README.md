@@ -1,13 +1,13 @@
 # create-mcp
 
-A CLI tool that sets up a Model Control Protocol (MCP) server and deploys it to Cloudflare Workers so you can start making new tools for your Cursor Agent in minutes.
+A CLI tool that sets up a [Model Control Protocol (MCP)](https://modelcontextprotocol.io) server and deploys it to Cloudflare Workers so you can start making new tools for your Cursor Agent in minutes.
 
 > Just write TypeScript functions with JSDoc comments to give your agent MCP tools.
 
 ## Prerequisites
 
-- A Cloudflare account with [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed. You can make sure you are logged in to Wrangler by running `wrangler login`.
-- Claude Desktop App installed (because it uses workers-mcp under the hood)
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed and logged in with your Cloudflare account.
+- Claude Desktop App installed.
 
 ## Instructions
 
@@ -24,8 +24,7 @@ You can also pass a name to the server: `bun create mcp <server-name>`.
 - Clones the template worker repository into `<current-dir>/<server-name>`
 - Installs dependencies
 - Initializes a Git repository
-- Sets up the MCP server using [workers-mcp](https://github.com/cloudflare/workers-mcp)
-- Deploys a Cloudflare Worker with the same name as the server
+- Deploys a Hello World MCP server to your Cloudflare account
 - Adds it to Claude Desktop
 - Copies the MCP server command to your clipboard so you can paste it into Cursor
 
@@ -40,7 +39,7 @@ bun dev
 
 ## How to Use
 
-Just add functions to the `MyWorker` class in `src/index.ts`.
+Just add functions to the `MyWorker` class in `src/index.ts`. Each function will compile into an MCP tool.
 
 For example:
 
@@ -73,9 +72,9 @@ Now you can ask your agent to use the new tool!
 
 ## Why Cloudflare Workers?
 
-Honestly? Vibes and good DX. Also deployments are blazing fast.
+Honestly, vibes, great DX, and blazing fast deployments.
 
-I don't like running MCP servers locally, and I'm pretty sure you don't either. Now you don't have to run a node process if you just want to create and use minimal API wrapper MCP tools in Cursor.
+I don't like running MCP servers locally, and I'm pretty sure you don't either. Now we don't have to run node processes to use simple MCP tools in Cursor that call APIs.
 
 All you have to do is write functions. Put your descriptions and params in JSDoc comments and it just works.
 
