@@ -21,8 +21,6 @@ You can also pass a name to the server: `bun create mcp <server-name>`.
 
 ## What this CLI does
 
-For new servers:
-
 - Clones the template worker repository into `<current-dir>/<server-name>`
 - Installs dependencies
 - Initializes a Git repository
