@@ -30,15 +30,6 @@ For new servers:
 - Adds it to Claude Desktop
 - Copies the MCP server command to your clipboard so you can paste it into Cursor
 
-For cloning existing servers:
-
-- Clones the repository from GitHub
-- Installs dependencies
-- Sets up a new MCP secret
-- Deploys to your Cloudflare account
-- Adds it to Claude Desktop
-- Copies the MCP server command to your clipboard
-
 ## Development
 
 To start hacking on your MCP server:
