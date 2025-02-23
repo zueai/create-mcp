@@ -1,6 +1,6 @@
 # MCP Server
 
-This is a [Model Control Protocol (MCP)](https://modelcontextprotocol.io) server built with [create-mcp](https://github.com/zueai/create-mcp).
+This is a [Model Control Protocol (MCP)](https://modelcontextprotocol.io) server built with the [create-mcp](https://github.com/zueai/create-mcp) CLI.
 
 ## Getting Started
 
