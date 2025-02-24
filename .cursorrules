@@ -15,7 +15,3 @@ This is super useful if you want to add MCP tools to your Cursor Agent to call A
 - Deploy a Cloudflare Workers with the same name as the server
 - Add it to Claude Desktop
 - Copy the MCP server command to your clipboard so you can paste it into Cursor
-
-## Testing the CLI
-
-To test the CLI, run `test-mcp <test-server-name>` from the root of the project. This will create a new project in a temporary directory and then clean it up after the test is done.

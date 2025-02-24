@@ -1,5 +1,5 @@
-import { WorkerEntrypoint } from "cloudflare:workers";
-import { ProxyToSelf } from "workers-mcp";
+import { WorkerEntrypoint } from "cloudflare:workers"
+import { ProxyToSelf } from "workers-mcp"
 
 export default class MyWorker extends WorkerEntrypoint<Env> {
 	/**
@@ -8,13 +8,13 @@ export default class MyWorker extends WorkerEntrypoint<Env> {
 	 * @return {string} the contents of our greeting.
 	 */
 	sayHello(name: string) {
-		return `Hello from an MCP Worker, ${name}!`;
+		return `Hello from an MCP Worker, ${name}!`
 	}
 
 	/**
 	 * @ignore
 	 **/
 	async fetch(request: Request): Promise<Response> {
-		return new ProxyToSelf(this).fetch(request);
+		return new ProxyToSelf(this).fetch(request)
 	}
 }

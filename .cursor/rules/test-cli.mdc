@@ -1,0 +1,22 @@
+---
+description: testing cli
+globs: cli.ts
+alwaysApply: false
+---
+## Testing the CLI locally
+
+You can test the CLI locally (from the root folder) using this command that changes to the tmp directory and runs the cli.ts in its parent folder. The tmp/ folder is gitignored, so we can clone repos in subdirectories of tmp/
+
+```bash
+cd tmp && bun ../cli.ts
+```
+
+or with options:
+
+```bash
+cd tmp && bun ../cli.ts --name my-server
+```
+
+```bash
+cd tmp && bun ../cli.ts --clone https://github.com/user/repo
+```

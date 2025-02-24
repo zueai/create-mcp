@@ -17,7 +17,7 @@ To scaffold and deploy a new MCP server, just run:
 bun create mcp
 ```
 
-You can also pass a name directly to the command: `bun create mcp <server-name>`.
+You can also pass a name directly to the command: `bun create mcp --name <server-name>`.
 
 ## What this CLI does
 

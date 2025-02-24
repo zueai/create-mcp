@@ -21,15 +21,15 @@ const PACKAGE_MANAGERS = {
 type PackageManager = keyof typeof PACKAGE_MANAGERS
 
 interface Args {
-	_: string[]
+	name?: string
 	clone?: string
 }
 
 async function getProjectDetails() {
 	// Parse command line arguments
 	const argv = (await yargs(hideBin(process.argv))
-		.usage("Usage: $0 [name] [options]")
-		.positional("name", {
+		.usage("Usage: $0 --name <name> [options]")
+		.option("name", {
 			type: "string",
 			describe: "Name of the MCP server"
 		})
@@ -38,9 +38,9 @@ async function getProjectDetails() {
 			describe: "GitHub URL of an existing MCP server to clone"
 		})
 		.example([
-			["$0 my-server", "Create a new MCP server"],
+			["$0 --name my-server", "Create a new MCP server"],
 			[
-				"$0 my-server --clone https://github.com/user/repo",
+				"$0 --name my-server --clone https://github.com/user/repo",
 				"Clone an existing MCP server"
 			]
 		])
@@ -48,14 +48,29 @@ async function getProjectDetails() {
 
 	const isCloning = !!argv.clone
 	const githubUrl = argv.clone || ""
-	let projectName = argv._[0] || ""
+	let projectName = argv.name || ""
 
 	if (isCloning && !githubUrl) {
 		console.error(pc.red("GitHub URL is required when using --clone flag"))
 		process.exit(1)
 	}
 
-	if (!projectName) {
+	if (isCloning && !projectName) {
+		// Extract repo name from GitHub URL
+		const repoName = githubUrl.split("/").pop()?.replace(".git", "") || ""
+
+		// Ask for project name with repo name as default
+		const response = await prompts({
+			type: "text",
+			name: "projectName",
+			message: "What is the name of your MCP server?",
+			initial: repoName,
+			validate: (value) =>
+				value.length > 0 ? true : "Project name is required"
+		})
+
+		projectName = response.projectName
+	} else if (!projectName) {
 		const response = await prompts({
 			type: "text",
 			name: "projectName",
@@ -307,7 +322,7 @@ async function cloneExistingServer(
 async function main() {
 	// Display welcome message
 	console.log("\n")
-	console.log(pc.bgCyan(pc.black(" ⚡️ Welcome to create-mcp ")))
+	console.log(pc.bgCyan(pc.black(" ⚡️ Welcome to create-mcp CLI ")))
 
 	try {
 		const { projectName, packageManager, githubUrl, isCloning } =

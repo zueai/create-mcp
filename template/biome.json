@@ -6,7 +6,8 @@
 			"public/**/*",
 			"**/*.css",
 			".wrangler/**/*",
-			"drizzle/**/*"
+			"drizzle/**/*",
+			"worker-configuration.d.ts"
 		]
 	},
 	"linter": {
@@ -19,7 +20,8 @@
 			"**/*.css",
 			".wrangler/**/*",
 			"node_modules/**/*",
-			"drizzle/**/*"
+			"drizzle/**/*",
+			"worker-configuration.d.ts"
 		]
 	},
 	"formatter": {
