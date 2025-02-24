@@ -8,12 +8,11 @@ export default class MyWorker extends WorkerEntrypoint<Env> {
 	 * @return {Promise<any>} the response from the JokeAPI.
 	 */
 	async getJokes(n: number) {
-		const url = new URL("https://v2.jokeapi.dev/joke/Programming")
-		url.searchParams.set("amount", n.toString())
-
-		const response = await fetch(url.toString())
-
+		const response = await fetch(
+			`https://v2.jokeapi.dev/joke/Programming?amount=${n}`
+		)
 		const data = await response.json()
+
 		return {
 			content: [
 				{
