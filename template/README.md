@@ -47,6 +47,10 @@ The JSDoc comments are important:
 - `@param` tags define the tool's parameters with types and descriptions
 - `@return` tag specifies the return value and type
 
+## Available Tools
+
+See [src/index.ts](src/index.ts) for the current list of tools.
+
 ## Learn More
 
 Check out the following resources to learn more:
