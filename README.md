@@ -71,8 +71,8 @@ All you have to do is write functions. Put your descriptions and params in JSDoc
 
 ## Example Servers made with create-mcp
 
-- [Neon](https://github.com/amxv/neon-mcp)
-- [Cloudflare](https://github.com/amxv/cloudflare-api-mcp)
+- [Neon](https://github.com/zueai/neon-mcp)
+- [Cloudflare](https://github.com/zueai/cloudflare-api-mcp)
 
 You can clone and deploy any MCP server made with create-mcp to your own Cloudflare account:
 

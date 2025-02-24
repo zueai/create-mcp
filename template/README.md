@@ -18,7 +18,6 @@ bun create mcp --clone https://github.com/your-username/mcp-server-name
 
 ```bash
 bunx wrangler secret put MY_API_KEY
-
 ```
 
 ## Deploying Changes
@@ -64,5 +63,5 @@ Check out the following resources to learn more:
 
 - [create-mcp Documentation](https://github.com/zueai/create-mcp) - learn about the create-mcp CLI
 - [Model Control Protocol Documentation](https://modelcontextprotocol.io) - learn about the model control protocol
-- [workers-mcp](https://github.com/zueai/workers-mcp) - the package that implements the MCP protocol for Cloudflare Workers
+- [workers-mcp](https://github.com/cloudflare/workers-mcp) - the package that implements the MCP protocol for Cloudflare Workers
 - [Cloudflare Workers documentation](https://developers.cloudflare.com/workers/) - learn about the Cloudflare Workers platform
