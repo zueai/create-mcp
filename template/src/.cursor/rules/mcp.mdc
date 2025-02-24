@@ -1,8 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # MCP Server
 
 ## Project Context
 
-This is a template for a Model Control Protocol (MCP) server. It is a cloudflare worker that exposes a set of tools to an LLM.
+This is a Model Control Protocol (MCP) server that exposes a set of tools for _____.
+
+It uses the workers-mcp package to implement MCP protocol in Cloudflare Workers.
 
 ### What is MCP?
 
@@ -12,7 +19,7 @@ MCP Clients are protocol clients that maintain 1:1 connections with servers.
 
 MCP Servers, such as this one, are lightweight programs that each expose specific capabilities through the standardized Model Context Protocol.
 
-## How to write MCP tools
+## Format for defining tools
 
 Edit the `src/index.ts` file to add new tools. Each method in the `MyWorker` class becomes an MCP tool that can be used by your Cursor Agent.
 
@@ -34,6 +41,60 @@ sayHello(name: string) {
 - The `@return` tag is the tool's return value, with its type.
 
 To add a new tool, just write a new function to the `MyWorker` class, following the example above. Make sure to add the JSDoc comment in the exact format shown above with the correct types so that the compiler parses it correctly.
+
+## How to write functions to wrap APIs
+
+Most of the time, you will be writing tools that return objects that are a lot more complex than simple strings. To comply with the MCP Tools Spec, you must stringify the object to text and return responses in this shape.
+
+```typescript
+type ResponseFormat = {
+	content: {
+		type: "text"
+		text: string
+	}[]
+}
+```
+
+Here is an example that gets a list of zones for a Cloudflare account. Notice that the return type follows the spec instead of returning the response object directly.
+
+```typescript
+// src/index.ts
+import { Cloudflare } from "cloudflare"
+
+export default class MyWorker extends WorkerEntrypoint<Env> {
+	/**
+	 * List all Cloudflare zones for the account.
+	 * @return {Promise<any>} List of zones.
+	 */
+	async listZones() {
+		const client = new Cloudflare({
+			apiKey: this.env.CLOUDFLARE_API_KEY,
+			apiEmail: this.env.CLOUDFLARE_API_EMAIL
+		})
+
+		const response = await client.zones.list()
+
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response, null, 2)
+				}
+			]
+		}
+	}
+
+	/**
+	 * @ignore
+	 */
+	async fetch(request: Request): Promise<Response> {
+		return new ProxyToSelf(this).fetch(request)
+	}
+}
+
+```
+
+
 
 ## Deployment
 
