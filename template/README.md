@@ -1,8 +1,16 @@
 # MCP Server
 
-This is a [Model Control Protocol (MCP)](https://modelcontextprotocol.io) server built with the [create-mcp](https://github.com/zueai/create-mcp) CLI.
+This is a Model Control Protocol (MCP) server bootstrapped using the [create-mcp](https://github.com/zueai/create-mcp) CLI.
 
-## Getting Started
+## Installation
+
+Run the automated setup script that will clone the worker and deploy it to your Cloudflare account:
+
+```bash
+bun create mcp --clone https://github.com/your-username/mcp-server-name
+```
+
+## Development
 
 First, run the development server:
 
@@ -35,7 +43,7 @@ The JSDoc comments are important:
 - `@param` tags define the tool's parameters with types and descriptions
 - `@return` tag specifies the return value and type
 
-## Deploy Changes
+## Deploying Changes
 
 When you're ready to deploy your changes:
 
