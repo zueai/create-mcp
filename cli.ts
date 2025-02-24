@@ -139,10 +139,14 @@ async function updateConfigurations(targetDir: string, projectName: string) {
 	)
 	await writeFile(wranglerPath, wranglerContent)
 
-	// Update README.md heading
+	// Update README.md heading and clone command
 	const readmePath = join(targetDir, "README.md")
 	let readmeContent = await readFile(readmePath, "utf-8")
 	readmeContent = readmeContent.replace(/^# [^\n]+/, `# ${projectName}`)
+	readmeContent = readmeContent.replace(
+		/bun create mcp --clone https:\/\/github\.com\/[^/]+\/[^/\n]+/,
+		`bun create mcp --clone https://github.com/your-username/${projectName}`
+	)
 	await writeFile(readmePath, readmeContent)
 }
 

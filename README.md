@@ -28,15 +28,6 @@ You can also pass a name directly to the command: `bun create mcp --name <server
 - Adds it to Claude Desktop
 - Copies the MCP server command to your clipboard so you can paste it into Cursor
 
-## Development
-
-To start hacking on your MCP server:
-
-```bash
-cd <server-name>
-bun dev
-```
-
 ## How to Use
 
 Just add functions to the `MyWorker` class in `src/index.ts`. Each function will compile into an MCP tool.
@@ -72,7 +63,7 @@ Now you can ask your agent to use the new tool!
 
 ## Why Cloudflare Workers?
 
-Honestly, vibes, great DX, and blazing fast deployments.
+Vibes, great DX, and blazing fast deployments.
 
 I don't like running MCP servers locally, and I'm pretty sure you don't either. Now we don't have to run node processes to use simple MCP tools in Cursor that call APIs.
 

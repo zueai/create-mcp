@@ -1,24 +1,28 @@
 # MCP Server
 
-This is a Model Control Protocol (MCP) server bootstrapped using the [create-mcp](https://github.com/zueai/create-mcp) CLI.
+This is a lightweight Model Control Protocol (MCP) server bootstrapped with [create-mcp](https://github.com/zueai/create-mcp) and deployed on Cloudflare Workers.
+
+This MCP server allows AI agents (such as Cursor) to use the functions in `src/index.ts` as MCP tools.
 
 ## Installation
 
-Run the automated setup script that will clone the worker and deploy it to your Cloudflare account:
+Run the automated install script to clone this MCP server and deploy it to your Cloudflare account:
 
 ```bash
 bun create mcp --clone https://github.com/your-username/mcp-server-name
 ```
 
-## Development
+Open `Cursor Settings -> MCP -> Add new MCP server` and paste the command that was copied to your clipboard.
 
-First, run the development server:
+## Deploying Changes
+
+When you're ready to deploy your changes:
 
 ```bash
-bun dev
+bun run deploy
 ```
 
-Open Cursor and paste the MCP server command that was copied to your clipboard during setup. Don't forget to reload your Cursor window to use the updated tools.
+Then reload your Cursor window to use the updated tools.
 
 ## How to create new MCP tools
 
@@ -43,39 +47,11 @@ The JSDoc comments are important:
 - `@param` tags define the tool's parameters with types and descriptions
 - `@return` tag specifies the return value and type
 
-## Deploying Changes
-
-When you're ready to deploy your changes:
-
-```bash
-bun run deploy
-```
-
-Then reload your Cursor window to use the updated tools.
-
-## About
-
-This MCP server is deployed on [Cloudflare Workers](https://workers.cloudflare.com), providing:
-
-- Edge computing performance
-- Automatic scaling
-- Zero cold starts
-- Global distribution
-
 ## Learn More
 
-To learn more about MCP and create-mcp, check out the following resources:
+Check out the following resources to learn more:
 
-- [Model Control Protocol Documentation](https://modelcontextprotocol.io) - learn about MCP features and API.
-- [create-mcp Documentation](https://github.com/zueai/create-mcp) - learn about create-mcp features and API.
-- [workers-mcp](https://github.com/zueai/workers-mcp) - the underlying MCP implementation for Cloudflare Workers.
-
-## Deploy on Cloudflare
-
-To deploy your MCP server on Cloudflare, run the following command:
-
-```bash
-bun run deploy
-```
-
-Check out the [Cloudflare Workers documentation](https://developers.cloudflare.com/workers/) for more details.
+- [create-mcp Documentation](https://github.com/zueai/create-mcp) - learn about the create-mcp CLI
+- [Model Control Protocol Documentation](https://modelcontextprotocol.io) - learn about the model control protocol
+- [workers-mcp](https://github.com/zueai/workers-mcp) - the package that implements the MCP protocol for Cloudflare Workers
+- [Cloudflare Workers documentation](https://developers.cloudflare.com/workers/) - learn about the Cloudflare Workers platform
