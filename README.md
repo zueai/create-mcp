@@ -69,10 +69,16 @@ I don't like running MCP servers locally, and I'm pretty sure you don't either. 
 
 All you have to do is write functions. Put your descriptions and params in JSDoc comments and it just works.
 
-## Examples
+## Example Servers made with create-mcp
 
 - [Neon](https://github.com/amxv/neon-mcp)
 - [Cloudflare](https://github.com/amxv/cloudflare-api-mcp)
+
+You can clone and deploy any MCP server made with create-mcp to your own Cloudflare account:
+
+```bash
+bun create mcp --clone <github-url>
+```
 
 ## Contributing
 

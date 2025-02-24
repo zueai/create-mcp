@@ -1,8 +1,8 @@
 # MCP Server
 
-This is a lightweight Model Control Protocol (MCP) server bootstrapped with [create-mcp](https://github.com/zueai/create-mcp) and deployed on Cloudflare Workers.
+This is a lightweight Model Control Protocol (MCP) server bootstrapped with [create-mcp](https://github.com/zueai/create-mcp), and deployed on Cloudflare Workers.
 
-This MCP server allows AI agents (such as Cursor) to use the functions in `src/index.ts` as MCP tools.
+This MCP server allows AI agents (such as Cursor) to use the functions in [src/index.ts](src/index.ts) as MCP tools.
 
 ## Installation
 
@@ -13,6 +13,13 @@ bun create mcp --clone https://github.com/your-username/mcp-server-name
 ```
 
 2. Open `Cursor Settings -> MCP -> Add new MCP server` and paste the command that was copied to your clipboard.
+
+3. (Optional) Upload any secrets:
+
+```bash
+bunx wrangler secret put MY_API_KEY
+
+```
 
 ## Deploying Changes
 

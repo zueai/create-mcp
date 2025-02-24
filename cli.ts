@@ -251,7 +251,7 @@ async function cloneExistingServer(
 	console.log(pc.cyan("\n⚡️ Cloning repository..."))
 	execSync(`git clone ${githubUrl} ${targetDir}`, { stdio: "inherit" })
 
-	// Remove the .git folder to start fresh
+	// Remove the .git folder and reinitialize the repository
 	console.log(pc.cyan("\n⚡️ Initializing fresh git repository..."))
 	execSync(`rm -rf ${join(targetDir, ".git")}`)
 	execSync("git init -b main", { cwd: targetDir })
