@@ -6,23 +6,23 @@ This MCP server allows AI agents (such as Cursor) to use the functions in `src/i
 
 ## Installation
 
-Run the automated install script to clone this MCP server and deploy it to your Cloudflare account:
+1. Run the automated install script to clone this MCP server and deploy it to your Cloudflare account:
 
 ```bash
 bun create mcp --clone https://github.com/your-username/mcp-server-name
 ```
 
-Open `Cursor Settings -> MCP -> Add new MCP server` and paste the command that was copied to your clipboard.
+2. Open `Cursor Settings -> MCP -> Add new MCP server` and paste the command that was copied to your clipboard.
 
 ## Deploying Changes
 
-When you're ready to deploy your changes:
+1. Run the deploy script:
 
 ```bash
 bun run deploy
 ```
 
-Then reload your Cursor window to use the updated tools.
+2. Then reload your Cursor window to use the updated tools.
 
 ## How to create new MCP tools
 
