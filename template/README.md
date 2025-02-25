@@ -2,7 +2,9 @@
 
 This is a lightweight Model Control Protocol (MCP) server bootstrapped with [create-mcp](https://github.com/zueai/create-mcp), and deployed on Cloudflare Workers.
 
-This MCP server allows AI agents (such as Cursor) to use the functions in [src/index.ts](src/index.ts) as MCP tools.
+## Available Tools
+
+See [src/index.ts](src/index.ts) for the current list of tools. Every method in the class is an MCP tool.
 
 ## Installation
 
@@ -52,10 +54,6 @@ The JSDoc comments are important:
 - First line becomes the tool's description
 - `@param` tags define the tool's parameters with types and descriptions
 - `@return` tag specifies the return value and type
-
-## Available Tools
-
-See [src/index.ts](src/index.ts) for the current list of tools.
 
 ## Learn More
 
