@@ -19,82 +19,147 @@ MCP Clients are protocol clients that maintain 1:1 connections with servers.
 
 MCP Servers, such as this one, are lightweight programs that each expose specific capabilities through the standardized Model Context Protocol.
 
-## Format for defining tools
+# Format for Defining Tools
 
-Edit the `src/index.ts` file to add new tools. Each method in the `MyWorker` class becomes an MCP tool that can be used by your Cursor Agent.
-
-For example, here is an example of an MCP tool that returns a friendly greeting:
+Each method in the `MyWorker` class automatically becomes an MCP tool that can be used by AI agents. The method signature and JSDoc comments define how the tool appears to the agent.
 
 ```typescript
 /**
- * A warm, friendly greeting from your new Workers MCP server.
- * @param name {string} the name of the person we are greeting.
- * @return {string} the contents of our greeting.
+ * List all Cloudflare zones for the account.
+ * @return {Promise<any>} List of zones.
  */
-sayHello(name: string) {
-    return `Hello from an MCP Worker, ${name}!`;
+async listZones() {
+    const response = await listZones(this.env);
+    return response;
 }
 ```
 
-- The JSDoc comment's first line is the tool's description.
-- The `@param` tags are the tool's parameters, with their types and descriptions.
-- The `@return` tag is the tool's return value, with its type.
-
-To add a new tool, just write a new function to the `MyWorker` class, following the example above. Make sure to add the JSDoc comment in the exact format shown above with the correct types so that the compiler parses it correctly.
-
-## How to write functions to wrap APIs
-
-Most of the time, you will be writing tools that return objects that are a lot more complex than simple strings. To comply with the MCP Tools Spec, you must stringify the object to text and return responses in this shape.
+For tools with parameters:
 
 ```typescript
-type ResponseFormat = {
-	content: {
-		type: "text"
-		text: string
-	}[]
+/**
+ * Create a new DNS record.
+ * @param zoneId {string} The ID of the zone to create the record in.
+ * @param name {string} The name of the DNS record.
+ * @param content {string} The content of the DNS record.
+ * @param type {string} The type of DNS record (CNAME, A, TXT, or MX).
+ * @return {Promise<any>} The created DNS record.
+ */
+async createDNSRecord(zoneId: string, name: string, content: string, type: string) {
+    return await createDNSRecord(this.env, zoneId, name, content, type);
 }
 ```
 
-Here is an example that gets a list of zones for a Cloudflare account. Notice that the return type follows the spec instead of returning the response object directly.
+The JSDoc structure is critical:
+- The first line becomes the tool's description
+- Each `@param` defines a parameter with its type and description
+- The `@return` specifies what the tool returns
+
+# Handling Complex Types (Arrays and Objects)
+
+The docgen script in workers-mcp has a limitation: it can only handle primitive types like `string`, `number`, and `boolean` in the JSDoc. To work with complex types like arrays or objects, follow this pattern:
+
+1. Define the parameter as a `string` in JSDoc
+2. Document that it should be a JSON representation of the complex type
+3. Parse the JSON string in your implementation
+
+**Example with Array Parameters:**
 
 ```typescript
-// src/index.ts
-import { Cloudflare } from "cloudflare"
-
-export default class MyWorker extends WorkerEntrypoint<Env> {
-	/**
-	 * List all Cloudflare zones for the account.
-	 * @return {Promise<any>} List of zones.
-	 */
-	async listZones() {
-		const client = new Cloudflare({
-			apiKey: this.env.CLOUDFLARE_API_KEY,
-			apiEmail: this.env.CLOUDFLARE_API_EMAIL
-		})
-
-		const response = await client.zones.list()
-
-		return {
-			content: [
-				{
-					type: "text",
-					text: JSON.stringify(response, null, 2)
-				}
-			]
-		}
-	}
-
-	/**
-	 * @ignore
-	 */
-	async fetch(request: Request): Promise<Response> {
-		return new ProxyToSelf(this).fetch(request)
-	}
+/**
+ * Bulk delete keys from a KV namespace.
+ * @param accountId {string} The Cloudflare account ID.
+ * @param namespaceId {string} The ID of the namespace.
+ * @param keys {string} JSON string array of key names to delete. Format: ["key1", "key2", "key3"]
+ * @return {Promise<any>} Response from the bulk delete operation.
+ */
+async bulkDeleteKVKeys(accountId: string, namespaceId: string, keys: string) {
+    // Parse the JSON string to get the array of keys
+    const parsedKeys = JSON.parse(keys) as string[];
+    
+    return await bulkDeleteKeys(this.env, accountId, namespaceId, parsedKeys);
 }
-
 ```
 
+**Example with Object Array Parameters:**
 
+```typescript
+/**
+ * Acknowledge messages from a queue.
+ * @param accountId {string} The Cloudflare account ID.
+ * @param queueId {string} The ID of the queue.
+ * @param acks {string} JSON string of message lease IDs. Format: [{lease_id: "string"}]
+ * @return {Promise<any>} Response from the acknowledge operation.
+ */
+async acknowledgeQueueMessages(accountId: string, queueId: string, acks: string) {
+    // Parse the JSON string to get the array of objects
+    const parsedAcks = JSON.parse(acks) as Array<{ lease_id: string }>;
+    
+    return await acknowledgeMessages(this.env, accountId, queueId, parsedAcks);
+}
+```
+
+**Key Points:**
+- Always use `{string}` type in JSDoc for any complex data structure
+- Always include a clear format example in the description
+- Parse the JSON in the implementation using `JSON.parse()`
+- Use TypeScript's `as` operator to apply the correct type to the parsed data
+
+# How to Write Functions to Wrap APIs
+
+When implementing tools that interact with external APIs, follow this pattern:
+
+1. Import the necessary functions from your API wrapper modules
+2. Create a method that calls these functions with the appropriate parameters
+3. Return the response in the standardized MCP format
+
+All responses must conform to the MCP Tools Spec, which requires this shape:
+
+```typescript
+{
+    content: [
+        {
+            type: "text",
+            text: string
+        }
+    ]
+}
+```
+
+**Implementation Example:**
+
+```typescript
+/**
+ * List all Cloudflare zones for the account.
+ * @return {Promise<any>} List of zones.
+ */
+async listZones() {
+    const client = new Cloudflare({
+        apiKey: this.env.CLOUDFLARE_API_KEY,
+        apiEmail: this.env.CLOUDFLARE_API_EMAIL
+    });
+
+    const response = await client.zones.list();
+
+    // Format response according to MCP spec
+    return {
+        content: [
+            {
+                type: "text",
+                text: JSON.stringify(response, null, 2)
+            }
+        ]
+    };
+}
+```
+
+For API implementations, you typically:
+1. Create an API client using credentials from environment variables
+2. Make the API call with parameters passed to your tool
+3. Convert the API response to a JSON string
+4. Wrap that string in the MCP response format
+
+Most of your implementation files (like `cloudflare/zones.ts`) should handle the MCP response formatting, allowing your tool methods to simply pass through parameters and return the result.
 
 ## Deployment
 
