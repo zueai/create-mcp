@@ -73,6 +73,7 @@ All you have to do is write functions. Put your descriptions and params in JSDoc
 
 - [Neon](https://github.com/zueai/neon-mcp)
 - [Cloudflare](https://github.com/zueai/cloudflare-api-mcp)
+- [Vercel](https://github.com/zueai/vercel-api-mcp)
 
 You can clone and deploy any MCP server made with create-mcp to your own Cloudflare account:
 
